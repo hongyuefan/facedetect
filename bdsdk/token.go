@@ -70,33 +70,48 @@ type EyeStatus struct {
 }
 
 type LandMark150 struct {
+	CheekRight1    Coordinate `json:"cheek_right_1"`
 	CheekRight3    Coordinate `json:"cheek_right_3"`
 	CheekRight7    Coordinate `json:"cheek_right_7"`
 	Chin2          Coordinate `json:"chin_2"`
+	CheekLeft1     Coordinate `json:"cheek_left_1"`
 	CheekLeft7     Coordinate `json:"cheek_left_7"`
 	CheekLeft3     Coordinate `json:"cheek_left_3"`
 	EyeRCornerR    Coordinate `json:"eye_right_corner_right"`
 	EyeRELUp2      Coordinate `json:"eye_right_eyelid_upper_2"`
 	EyeRELUp4      Coordinate `json:"eye_right_eyelid_upper_4"`
+	EyeRELL4       Coordinate `json:"eye_right_eyelid_lower_4"`
 	EyeRCornerL    Coordinate `json:"eye_right_corner_left"`
 	EyeRCornerL4   Coordinate `json:"eye_right_eyelid_lower_4"`
 	EyeRBallCenter Coordinate `json:"eye_right_eyeball_center"`
 	EyeBrowRCR     Coordinate `json:"eyebrow_right_corner_right"`
+	EyeBrowRUp4    Coordinate `json:"eyebrow_right_upper_4"`
 	EyeBrowRUp3    Coordinate `json:"eyebrow_right_upper_3"`
+	EyeBrowRUp2    Coordinate `json:"eyebrow_right_upper_2"`
 	EyeBrowRCL     Coordinate `json:"eyebrow_right_corner_left"`
+	EyeBrowRL1     Coordinate `json:"eyebrow_right_lower_1"`
 	EyeBrowRL2     Coordinate `json:"eyebrow_right_lower_2"`
+	EyeBrowRL3     Coordinate `json:"eyebrow_right_lower_3"`
 	EyeLCornerR    Coordinate `json:"eye_left_corner_right"`
 	EyeLELUp2      Coordinate `json:"eye_left_eyelid_upper_2"`
 	EyeLELUp4      Coordinate `json:"eye_left_eyelid_upper_4"`
-	EyeLCornerL    Coordinate `json:"eye_left_corner_left"`
 	EyeLELL4       Coordinate `json:"eye_left_eyelid_lower_4"`
+	EyeLCornerL    Coordinate `json:"eye_left_corner_left"`
 	EyeLBallCenter Coordinate `json:"eye_left_eyeball_center"`
 	EyeBrowLCR     Coordinate `json:"eyebrow_left_corner_right"`
+	EyeBrowLUp2    Coordinate `json:"eyebrow_left_upper_2"`
 	EyeBrowLUp3    Coordinate `json:"eyebrow_left_upper_3"`
+	EyeBrowLUp4    Coordinate `json:"eyebrow_left_upper_4"`
 	EyeBrowLCL     Coordinate `json:"eyebrow_left_corner_left"`
+	EyeBrowLL1     Coordinate `json:"eyebrow_left_lower_1"`
 	EyeBrowLL2     Coordinate `json:"eyebrow_left_lower_2"`
+	EyeBrowLL3     Coordinate `json:"eyebrow_left_lower_3"`
+	NoseRC1        Coordinate `json:"nose_right_contour_1"`
 	NoseRC4        Coordinate `json:"nose_right_contour_4"`
+	NoseRC5        Coordinate `json:"nose_right_contour_5"`
+	NoseLC1        Coordinate `json:"nose_left_contour_1"`
 	NoseLC4        Coordinate `json:"nose_left_contour_4"`
+	NoseLC5        Coordinate `json:"nose_left_contour_5"`
 	MouthCRO       Coordinate `json:"mouth_corner_right_outer"`
 	MouthLUO6      Coordinate `json:"mouth_lip_upper_outer_6"`
 	MouthCLO       Coordinate `json:"mouth_corner_left_outer"`
