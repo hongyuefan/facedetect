@@ -73,7 +73,9 @@ type LandMark150 struct {
 	CheekRight1    Coordinate `json:"cheek_right_1"`
 	CheekRight3    Coordinate `json:"cheek_right_3"`
 	CheekRight7    Coordinate `json:"cheek_right_7"`
+	Chin1          Coordinate `json:"chin_1"`
 	Chin2          Coordinate `json:"chin_2"`
+	Chin3          Coordinate `json:"chin_3"`
 	CheekLeft1     Coordinate `json:"cheek_left_1"`
 	CheekLeft7     Coordinate `json:"cheek_left_7"`
 	CheekLeft3     Coordinate `json:"cheek_left_3"`
@@ -82,9 +84,9 @@ type LandMark150 struct {
 	EyeRELUp4      Coordinate `json:"eye_right_eyelid_upper_4"`
 	EyeRELL4       Coordinate `json:"eye_right_eyelid_lower_4"`
 	EyeRCornerL    Coordinate `json:"eye_right_corner_left"`
-	EyeRCornerL4   Coordinate `json:"eye_right_eyelid_lower_4"`
 	EyeRBallCenter Coordinate `json:"eye_right_eyeball_center"`
 	EyeBrowRCR     Coordinate `json:"eyebrow_right_corner_right"`
+	EyeBrowRUp5    Coordinate `json:"eyebrow_right_upper_5"`
 	EyeBrowRUp4    Coordinate `json:"eyebrow_right_upper_4"`
 	EyeBrowRUp3    Coordinate `json:"eyebrow_right_upper_3"`
 	EyeBrowRUp2    Coordinate `json:"eyebrow_right_upper_2"`
@@ -102,6 +104,7 @@ type LandMark150 struct {
 	EyeBrowLUp2    Coordinate `json:"eyebrow_left_upper_2"`
 	EyeBrowLUp3    Coordinate `json:"eyebrow_left_upper_3"`
 	EyeBrowLUp4    Coordinate `json:"eyebrow_left_upper_4"`
+	EyeBrowLUp5    Coordinate `json:"eyebrow_left_upper_5"`
 	EyeBrowLCL     Coordinate `json:"eyebrow_left_corner_left"`
 	EyeBrowLL1     Coordinate `json:"eyebrow_left_lower_1"`
 	EyeBrowLL2     Coordinate `json:"eyebrow_left_lower_2"`

@@ -1,6 +1,7 @@
 package features
 
 import (
+	"encoding/json"
 	"testing"
 
 	sdk "github.com/hongyuefan/facedetect/bdsdk"
@@ -12,11 +13,11 @@ var face *sdk.Response
 
 //var url string = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553972164983&di=14264c7f7fc2bece2f3d990bef1e645b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01dcd05a169503a801213490d187d7.jpg%402o.jpg"
 
-//var url string = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554017262164&di=ad59e90cc3cd4b7ee47383ff35bc6d3a&imgtype=0&src=http%3A%2F%2Fimg1.cache.netease.com%2Fcatchpic%2F7%2F7C%2F7C0418EE4FFC2777036E6224418D9429.jpg"
+var url string = "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1554716664&di=6755891a1f1713b5eee03e307289914d&src=http://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/e824b899a9014c082301d7680d7b02087af4f4c1.jpg"
 
 //var url string = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554018064712&di=468136627bd6e8d4953efc97d118435b&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc8177f3e6709c93d8ec881ed993df8dcd10054f6.jpg"
 
-var url string = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554018350528&di=36bab3d6018aeeff80b976ae586bb268&imgtype=0&src=http%3A%2F%2Fi0.sinaimg.cn%2Fty%2Fj%2Fp%2F2010-04-01%2FU2035P6T12D4917194F44DT20100401180023.jpg"
+//var url string = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554018350528&di=36bab3d6018aeeff80b976ae586bb268&imgtype=0&src=http%3A%2F%2Fi0.sinaimg.cn%2Fty%2Fj%2Fp%2F2010-04-01%2FU2035P6T12D4917194F44DT20100401180023.jpg"
 
 func init() {
 
@@ -90,7 +91,7 @@ func TestRateFaceWidth(t *testing.T) {
 }
 
 func TestRateMouseWidth(t *testing.T) {
-	t.Log("数值越大嘴越大:", RateMouseWidth(face.Result.FaceList[0].Landmark150))
+	t.Log("数值越大嘴越大:", RateMouseLength(face.Result.FaceList[0].Landmark150))
 }
 
 func TestRateMouthLipThickness(t *testing.T) {
@@ -107,4 +108,16 @@ func TestRateNoseWidth(t *testing.T) {
 
 func TestAngleEyeBrow(t *testing.T) {
 	t.Log("眉毛角度：", AngleEyeBrow(face.Result.FaceList[0].Landmark150))
+}
+
+func TestGetFeature(t *testing.T) {
+
+	ft, err := GetFeatures("ARthitTObYeqbmIgbCnHlpDP", "CxEGjfrOqcZuF6GsqLTIUdlLXg8tO8OV", url)
+	if err != nil {
+		panic(err)
+	}
+
+	byt, _ := json.Marshal(ft)
+
+	t.Log(string(byt))
 }
