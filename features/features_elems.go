@@ -52,15 +52,23 @@ func NoseEagle(m sdk.LandMark150) float64 {
 }
 
 func EyeHeightDiff(m sdk.LandMark150) float64 {
-	return ((m.EyeRCornerR.Y - m.EyeRCornerL.Y) + (m.EyeLCornerL.Y - m.EyeLCornerR.Y)) / 2
+	return ((m.EyeRCornerL.Y - m.EyeRCornerR.Y) + (m.EyeLCornerR.Y - m.EyeLCornerL.Y)) / 2
 }
 
 func EyeLengthDiff(m sdk.LandMark150) float64 {
-	return math.Abs((m.EyeRCornerR.X-m.EyeRCornerL.X)+(m.EyeLCornerR.X-m.EyeLCornerL.X)) / 2
+	return math.Abs((m.EyeRCornerL.X-m.EyeRCornerR.X)+(m.EyeLCornerL.X-m.EyeLCornerR.X)) / 2
 }
 
 func EyeBrowDistence(m sdk.LandMark150) float64 {
 	return distance(m.EyeBrowRCL, m.EyeBrowLCR)
+}
+
+func EyeBrowMidHeightDiff(m sdk.LandMark150) float64 {
+	return ((m.EyeBrowLUp1.Y - m.EyeBrowLUp4.Y) + (m.EyeBrowRUp1.Y - m.EyeBrowRUp4.Y)) / 2
+}
+
+func EyeBrowMidLengthDiff(m sdk.LandMark150) float64 {
+	return math.Abs((m.EyeBrowLUp4.X-m.EyeBrowLUp1.X)+(m.EyeBrowRUp4.X-m.EyeBrowRUp1.X)) / 2
 }
 
 //眉尾与眉头差值
@@ -114,7 +122,7 @@ func MouthToNose(m sdk.LandMark150) float64 {
 }
 
 func EyeToBrow(m sdk.LandMark150) float64 {
-	return (distance(m.EyeBrowLL2, m.EyeLELUp2) + distance(m.EyeBrowRL2, m.EyeRELUp2)) / 2
+	return (distance(m.EyeBrowLL1, m.EyeLELUp3) + distance(m.EyeBrowRL1, m.EyeRELUp3)) / 2
 }
 
 func FaceHeightFrame(m sdk.LandMark150) float64 {

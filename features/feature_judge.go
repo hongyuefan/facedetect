@@ -79,6 +79,16 @@ func RateEyeBrowEye(m sdk.LandMark150) float64 {
 	return EyeBrowLength(m) / EyeLength(m) * 100
 }
 
+//眉毛高度与眼睛高度比例
+func RateEyeBrowHeight(m sdk.LandMark150) float64 {
+	return EyeBrowHighWidth(m) / EyeWidth(m) * 100
+}
+
+//眉毛到眉顶角度
+func AngleEyeBrowMid(m sdk.LandMark150) float64 {
+	return 180 / math.Pi * math.Atan(EyeBrowMidHeightDiff(m)/EyeBrowMidLengthDiff(m))
+}
+
 //眉毛与眉毛之间的距离与眼长之比
 func RateEyeBrowToEyeBrow(m sdk.LandMark150) float64 {
 	return EyeBrowDistence(m) / EyeLength(m) * 100

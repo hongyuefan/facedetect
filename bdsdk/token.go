@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -81,6 +82,7 @@ type LandMark150 struct {
 	CheekLeft3     Coordinate `json:"cheek_left_3"`
 	EyeRCornerR    Coordinate `json:"eye_right_corner_right"`
 	EyeRELUp2      Coordinate `json:"eye_right_eyelid_upper_2"`
+	EyeRELUp3      Coordinate `json:"eye_right_eyelid_upper_3"`
 	EyeRELUp4      Coordinate `json:"eye_right_eyelid_upper_4"`
 	EyeRELL4       Coordinate `json:"eye_right_eyelid_lower_4"`
 	EyeRCornerL    Coordinate `json:"eye_right_corner_left"`
@@ -90,17 +92,20 @@ type LandMark150 struct {
 	EyeBrowRUp4    Coordinate `json:"eyebrow_right_upper_4"`
 	EyeBrowRUp3    Coordinate `json:"eyebrow_right_upper_3"`
 	EyeBrowRUp2    Coordinate `json:"eyebrow_right_upper_2"`
+	EyeBrowRUp1    Coordinate `json:"eyebrow_right_upper_1"`
 	EyeBrowRCL     Coordinate `json:"eyebrow_right_corner_left"`
 	EyeBrowRL1     Coordinate `json:"eyebrow_right_lower_1"`
 	EyeBrowRL2     Coordinate `json:"eyebrow_right_lower_2"`
 	EyeBrowRL3     Coordinate `json:"eyebrow_right_lower_3"`
 	EyeLCornerR    Coordinate `json:"eye_left_corner_right"`
 	EyeLELUp2      Coordinate `json:"eye_left_eyelid_upper_2"`
+	EyeLELUp3      Coordinate `json:"eye_left_eyelid_upper_3"`
 	EyeLELUp4      Coordinate `json:"eye_left_eyelid_upper_4"`
 	EyeLELL4       Coordinate `json:"eye_left_eyelid_lower_4"`
 	EyeLCornerL    Coordinate `json:"eye_left_corner_left"`
 	EyeLBallCenter Coordinate `json:"eye_left_eyeball_center"`
 	EyeBrowLCR     Coordinate `json:"eyebrow_left_corner_right"`
+	EyeBrowLUp1    Coordinate `json:"eyebrow_left_upper_1"`
 	EyeBrowLUp2    Coordinate `json:"eyebrow_left_upper_2"`
 	EyeBrowLUp3    Coordinate `json:"eyebrow_left_upper_3"`
 	EyeBrowLUp4    Coordinate `json:"eyebrow_left_upper_4"`
@@ -130,7 +135,7 @@ type FacePoints struct {
 	Locat       Location    `json:"location"`
 	FaceProb    float64     `json:"face_probability"`
 	Angle       Angle       `json:"angle"`
-	Age         int32       `json:"age"`
+	Age         int64       `json:"age"`
 	Beauty      float64     `json:"beauty"`
 	Expression  Types       `json:"expression"`
 	Faceshap    Types       `json:"face_shape"`
@@ -218,6 +223,8 @@ func GetFace(key, scr, img, typ, fields string) (*Response, error) {
 	io.Copy(buf, rsp.Body)
 
 	response := new(Response)
+
+	fmt.Println(buf.String())
 
 	if err = json.Unmarshal(buf.Bytes(), response); err != nil {
 		return nil, err

@@ -65,50 +65,8 @@ func GetFeatures(key, scr, url string) (sdk.FacePoints, error) {
 
 	rsp, err := sdk.GetFace(key, scr, url, sdk.TYPE_IMG_URL, "age,beauty,expression,face_shape,gender,glasses,landmark150,race,quality,eye_status,emotion,face_type")
 
-	return rsp.Result.FaceList[0], err
-}
-
-func GetFeature(key, scr, url string) (*Feature, error) {
-	face, err := sdk.GetFace(key, scr, url, sdk.TYPE_IMG_URL, "age,beauty,expression,face_shape,gender,glasses,landmark150,race,quality,eye_status,emotion,face_type")
 	if err != nil {
-		return nil, err
+		return sdk.FacePoints{}, err
 	}
-
-	ff := face.Result.FaceList[0]
-
-	ft := new(Feature)
-
-	ft.Age = ff.Age
-	ft.Beauty = ff.Beauty
-	ft.Gender = ff.Gender.Type
-	ft.Emotion = ff.Emotion.Type
-	ft.Race = ff.Race.Type
-
-	ft.Ebrow.Angle = AngleEyeBrow(ff.Landmark150)
-	ft.Ebrow.Length = RateEyeBrowEye(ff.Landmark150)
-	ft.Ebrow.Width = RateEyeBrow(ff.Landmark150)
-
-	ft.Ey.Width = RateEyeWidth(ff.Landmark150)
-	ft.Ey.ToBrow = RateEyeToBrow(ff.Landmark150)
-	ft.Ey.ToEye = RateEyeDistance(ff.Landmark150)
-
-	ft.Ns.Width = RateNoseWidth(ff.Landmark150)
-	ft.Ns.Nasi = RateNoseEagle(ff.Landmark150)
-
-	ft.Mth.Length = RateMouseLength(ff.Landmark150)
-	ft.Mth.Width = RateMouthLipThickness(ff.Landmark150)
-	ft.Mth.Lips = RateMouthLip(ff.Landmark150)
-	ft.Mth.ToNose = RateChinLength(ff.Landmark150)
-	ft.Mth.LipsRate = RateMouthLip(ff.Landmark150)
-
-	ft.Fc.Shape = ff.Faceshap.Type
-	ft.Fc.Width = RateFaceWidth(ff.Landmark150)
-	ft.Fc.Length = RateFaceLength(ff.Landmark150)
-
-	ft.Ch.Length = RateChinLength(ff.Landmark150)
-	ft.Ch.Width = RateChinWidth(ff.Landmark150)
-
-	ft.RZ.Length = RateRenZLength(ff.Landmark150)
-
-	return ft, nil
+	return rsp.Result.FaceList[0], err
 }
