@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 )
@@ -224,15 +223,26 @@ func GetFace(key, scr, img, typ, fields string) (*Response, error) {
 
 	response := new(Response)
 
-	fmt.Println(buf.String())
-
 	if err = json.Unmarshal(buf.Bytes(), response); err != nil {
 		return nil, err
 	}
 
 	if response.ErrorCode != 0 {
-		return nil, errors.New(response.ErrorMsg)
+		return nil, errors.New(ErrorString(response.ErrorCode))
 	}
 
 	return response, nil
+}
+
+func ErrorString(c int) string {
+	switch c {
+	case 222202:
+		return "图片中没有人脸"
+	case 222203:
+		return "无法解析人脸"
+	case 222204:
+		return "从图片的url下载图片失败"
+	default:
+		return "未知错误"
+	}
 }
